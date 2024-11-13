@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Price Tracker</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Tracked Products</h1>
+    </header>
+    <main class="product-list">
+      <% products.forEach((product) => { %>
+        <div class="product-card">
+          <!-- Check if the product image is a Base64 string -->
+          <% if (product.product_image && product.product_image.startsWith('data:image')) { %>
+            <img src="<%=product.product_image%>" alt="<%= product.name %>" />
+          <% } else if (product.product_image) { %>
+            <img src="<%= product.product_image %>" alt="<%= product.name %>" />
+          <% } else { %>
+            <!-- Fallback to default image if no product image -->
+            <img src="/sad-pug-dog-rain-sitting-168599983.webp" alt="Default Image" />
+          <% } %>
+          <h3><%= product.name %></h3>
+          <p>Price (INR): <%= product.price_INR.toLocaleString() %></p>
+          <p>Price (USD): <%= product.price_USD.toLocaleString() %></p>
+          
+          <!-- Display the link to the product -->
+          <p>
+            Link:
+            <a href="<%= product.product_url %>" target="_blank">Go to Product</a>
+          </p>
+        </div>
+      <% }); %>
+    </main>
+  </body>
+</html>
