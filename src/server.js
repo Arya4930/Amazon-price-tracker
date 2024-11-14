@@ -1,7 +1,7 @@
 import express from 'express'
 const app = express();
 const port = 3001;
-import { tracking } from './tracking.js'
+import tracking from './backend/tracking'
 
 app.set("view engine", "ejs");
 app.use(express.static("public")); // Serve static files

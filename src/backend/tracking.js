@@ -115,5 +115,4 @@ cron.schedule("0 */2 * * *", async () => {
 
 await scrapeWebsites();
 
-// Export tracking for use in other files
-export { tracking };
+export default tracking
