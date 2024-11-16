@@ -34,4 +34,4 @@ package-lock.json
 yarn.lock
 
 # Ignore the local database
-database.sqlite
+*.sqlite
