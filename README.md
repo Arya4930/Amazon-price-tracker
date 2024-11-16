@@ -1,4 +1,4 @@
-Amazon Price Tracker
+# Amazon Price Tracker
 (frontend incoming)
 
 
@@ -6,4 +6,5 @@ Amazon Price Tracker
 
 
 
-authored by: Rajat and a little by arya.dev
+FrontEnd by: Rajat
+BackEnd by: arya.dev
