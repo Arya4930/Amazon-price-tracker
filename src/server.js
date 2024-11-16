@@ -2,11 +2,39 @@ import express from 'express'
 import cron from "node-cron";
 import ScrapeWebsite from "./backend/functions/ScrapeWebsite.js";
 import tracking from "./backend/DB/dbconfig.js";
+import { WebSocketServer } from 'ws'
 
 const app = express();
 const port = 5000;
 
 let cachedProducts = []; // Holds the latest scraped products
+const clients = new Set() // Track WebSocket Clients
+
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+
+app.get("/", async (req, res) => {
+  try {
+    cachedProducts = await tracking.findAll()
+    res.render("index.ejs", { cachedProducts });
+  } catch (error) {
+    res.status(500).send("Error fetching products");
+  }
+});
+
+const server =  app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
+const wss = new WebSocketServer({ server })
+
+wss.on("connection", (ws) => {
+   clients.add(ws)
+
+   ws.on('close', () => {
+    clients.delete(ws)
+   })
+})
 
 async function scrapeWebsites() {
   const urls = [
@@ -23,6 +51,9 @@ async function scrapeWebsites() {
     await ScrapeWebsite(url, tracking);
   }
   cachedProducts = await tracking.findAll();
+  for (const client of clients) {
+    client.send("reload");
+  }
 }
 
 cron.schedule("0 */2 * * *", async () => {
@@ -30,18 +61,3 @@ cron.schedule("0 */2 * * *", async () => {
 });
 
 await scrapeWebsites()
-
-app.set("view engine", "ejs");
-app.use(express.static("public"));
-
-app.get("/", async (req, res) => {
-  try {
-    res.render("index.ejs", { cachedProducts });
-  } catch (error) {
-    res.status(500).send("Error fetching products");
-  }
-});
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
