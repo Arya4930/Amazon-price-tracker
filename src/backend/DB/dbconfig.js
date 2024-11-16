@@ -14,19 +14,4 @@ try {
     console.error("Unable to connect to the database: ", error);
 }
 
-// Define the 'tracking' model
-const tracking = sequelize.define("tracking", {
-    name: {
-        type: Sequelize.STRING,
-        unique: true,
-    },
-    price_INR: Sequelize.INTEGER,
-    price_USD: Sequelize.INTEGER,
-    product_image: Sequelize.STRING,
-    product_url: Sequelize.STRING,
-});
-
-await tracking.sync();
-console.log("| ✅ Table synced");
-
-export default tracking
+export default sequelize

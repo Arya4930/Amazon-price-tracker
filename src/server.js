@@ -1,7 +1,7 @@
 import express from 'express'
 import cron from "node-cron";
 import ScrapeWebsite from "./backend/functions/ScrapeWebsite.js";
-import tracking from "./backend/DB/dbconfig.js";
+import tracking from "./backend/DB/tracking.js";
 import { WebSocketServer } from 'ws'
 
 const app = express();
