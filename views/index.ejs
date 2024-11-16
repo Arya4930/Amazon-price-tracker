@@ -11,7 +11,7 @@
       <h1>Tracked Products</h1>
     </header>
     <main class="product-list">
-      <% products.forEach((product) => { %>
+      <% cachedProducts.forEach((product) => { %>
         <div class="product-card">
           <!-- Check if the product image is a Base64 string -->
           <% if (product.product_image && product.product_image.startsWith('data:image')) { %>
