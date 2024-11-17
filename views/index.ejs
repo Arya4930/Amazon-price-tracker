@@ -44,13 +44,13 @@
 
           <form
             id="searchForm"
-            class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+            class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex flex-row"
             role="Product"
             onsubmit="return false;"
           >
             <input
               type="search"
-              class="form-control form-control-dark text-bg-dark"
+              class="form-control form-control-dark text-bg-dark me-lg-2"
               placeholder="Enter Product Link"
               aria-label="Amazon"
               id="productLink"
@@ -71,27 +71,23 @@
 
     <main class="product-list">
       <% cachedProducts.forEach((product) => { %>
-      <div class="product-card">
-        <!-- Check if the product image is a Base64 string -->
-        <% if (product.product_image) { %>
-        <img src="<%= product.product_image %>" alt="<%= product.name %>" />
-        <% } else { %>
-        <!-- Fallback to default image if no product image -->
-        <img
-          src="/sad-pug-dog-rain-sitting-168599983.webp"
-          alt="Default Image"
-        />
-        <% } %>
-        <h3><%= product.name %></h3>
-        <p>Price (INR): <%= product.price_INR.toLocaleString() %></p>
-        <p>Price (USD): <%= product.price_USD.toLocaleString() %></p>
+        <div class="card product-card" style="width: 18rem;">
 
-        <!-- Display the link to the product -->
-        <p>
-          Link:
-          <a href="<%= product.product_url %>" target="_blank">Go to Product</a>
-        </p>
-      </div>
+          <!-- Check if the product image is a Base64 string -->
+          <% if (product.product_image) { %>
+          <img class="card-img-top" src="<%= product.product_image %>" alt="<%= product.name %>" />
+          <% } else { %>
+          <!-- Fallback to default image if no product image -->
+          <img class="card-img-top" src="/sad-pug-dog-rain-sitting-168599983.webp" alt="Default Image" />
+          <% } %>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.name %></h5>
+            <p class="card-text">Price (INR): <%= product.price_INR.toLocaleString() %></p>
+            <p class="card-text">Price (USD): <%= product.price_USD.toLocaleString() %></p>
+            <!-- Display the link to the product -->
+            <a href="<%= product.product_url %>" class="btn btn-primary" target="_blank">Go to Product</a>
+          </div>
+        </div>
       <% }); %>
     </main>
 
