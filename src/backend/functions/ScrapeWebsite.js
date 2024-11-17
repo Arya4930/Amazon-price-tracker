@@ -21,7 +21,8 @@ export default async function ScrapeWebsite(url, tracking) {
       .text()
       .split(",")[0]
       .trim();
-    const product_image = $("#imgTagWrapperId").first().find("img").attr("src");
+
+    const product_image = ("#imgTagWrapperId").first().find("img").attr("src")
 
     const tracked = await tracking.findOne({ where: { name: title } });
 
@@ -51,6 +52,6 @@ export default async function ScrapeWebsite(url, tracking) {
       console.log(`| ✅ Data for ${title} added to database`);
     }
   } catch (error) {
-    console.error("| ❌ Error fetching website:", error.name);
+    console.error("| ❌ Error fetching website:", error);
   }
 }

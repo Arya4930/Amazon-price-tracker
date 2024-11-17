@@ -1,7 +1,7 @@
-import sequelize from "./dbconfig.js";
+import { Tracking } from "./dbconfig.js";
 import Sequelize from 'sequelize'
 
-const tracking = sequelize.define("tracking", {
+const tracking = Tracking.define("tracking", {
     name: {
         type: Sequelize.STRING,
         unique: true,

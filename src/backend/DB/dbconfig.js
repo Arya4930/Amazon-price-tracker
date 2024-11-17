@@ -1,17 +1,27 @@
 import Sequelize from 'sequelize'
 
-const sequelize = new Sequelize("database", "user", "password", {
+const Tracking = new Sequelize("database", "user", "password", {
     host: "localhost",
     dialect: "sqlite",
     logging: false,
-    storage: "database.sqlite", // SQLite only
+    port: 5432,
+    storage: 'tracking.sqlite'
+});
+
+const TrackingLinks = new Sequelize("database", "user", "password", {
+    host: "localhost",
+    dialect: "sqlite",
+    logging: false,
+    port: 5432,
+    storage: 'trackinglinks.sqlite'
 });
 
 try {
-    await sequelize.authenticate();
+    await Tracking.authenticate();
+    await TrackingLinks.authenticate();
     console.log("| ✅ Connection has been established successfully.");
 } catch (error) {
     console.error("Unable to connect to the database: ", error);
 }
 
-export default sequelize
+export { Tracking, TrackingLinks }

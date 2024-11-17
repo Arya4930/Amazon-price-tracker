@@ -1,7 +1,7 @@
-import sequelize from "./dbconfig.js";
+import TrackingLinks from "./dbconfig.js";
 import Sequelize from 'sequelize'
 
-const trackinglinks = sequelize.define("trackinglinks", {
+const trackinglinks = TrackingLinks.define("trackinglinks", {
     url: {
         type: Sequelize.STRING,
         unique: true

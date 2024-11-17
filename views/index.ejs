@@ -40,9 +40,7 @@
       <% cachedProducts.forEach((product) => { %>
         <div class="product-card">
           <!-- Check if the product image is a Base64 string -->
-          <% if (product.product_image && product.product_image.startsWith('data:image')) { %>
-            <img src="<%=product.product_image%>" alt="<%= product.name %>" />
-          <% } else if (product.product_image) { %>
+          <% if (product.product_image) { %>
             <img src="<%= product.product_image %>" alt="<%= product.name %>" />
           <% } else { %>
             <!-- Fallback to default image if no product image -->
