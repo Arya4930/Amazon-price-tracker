@@ -1,20 +1,19 @@
 import trackinglinks from "../DB/TrackingLinks.js";
+import ScrapeWebsite from "./ScrapeWebsite.js";
+import tracking from "../DB/tracking.js";
 
 async function AddTrackingutton(url) {
   try {
     if (!url) return "Please provide a URL.";
 
-    const amazonRegex = /^https:\/\/www\.amazon\.in\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=%]+$/;
-    if (!amazonRegex.test(url)) return "Please provide a valid Amazon.in product link.";
+    if (!url.startsWith('https://www.amazon.in/')) return "Please provide a valid Amazon.in product link.";
 
-    const normalizedUrl = url.toLowerCase();
-    const tracked = await trackinglinks.findOne({ where: { url: normalizedUrl } });
+    const tracked = await trackinglinks.findOne({ where: { url: url } });
 
     if (tracked) return "This link is already being tracked. Please avoid adding duplicates.";
 
-    await trackinglinks.create({ url: normalizedUrl });
-
-    console.log(`Added new tracking link: ${normalizedUrl}`);
+    await trackinglinks.create({ url: url, product_type: product_type });
+    await ScrapeWebsite(url, tracking)
     return "Amazon Link added successfully";
   } catch (error) {
     console.error("Error adding tracking link:", error);
