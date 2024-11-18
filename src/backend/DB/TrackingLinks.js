@@ -1,4 +1,4 @@
-import TrackingLinks from "./dbconfig.js";
+import {TrackingLinks} from "./dbconfig.js";
 import Sequelize from 'sequelize'
 
 const trackinglinks = TrackingLinks.define("trackinglinks", {
