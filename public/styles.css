@@ -26,7 +26,6 @@
   }
   
   .product-card {
-    width: 200px;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -42,10 +41,15 @@
   
   .product-card img {
     max-width: 100%;
-    height: auto;
+    max-height: 10rem;
     margin-bottom: 10px;
   }
   
+  .card-body{
+    max-height: 7rem;
+  }
+
+
   h3 {
     font-size: 18px;
     margin: 10px 0;
