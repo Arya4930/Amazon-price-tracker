@@ -2,7 +2,7 @@ import trackinglinks from "../DB/TrackingLinks.js";
 import ScrapeWebsite from "./ScrapeWebsite.js";
 import tracking from "../DB/tracking.js";
 
-async function AddTrackingutton(url) {
+async function AddTrackingutton(url, product_type) {
   try {
     if (!url) return "Please provide a URL.";
 

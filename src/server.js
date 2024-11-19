@@ -27,14 +27,15 @@ app.get("/", async (req, res) => {
 
 // API Endpoint for ading Trackinglinks
 app.post("/api/add-tracking", async (req, res) => {
-  const { url } = req.body;
+  console.log(req)
+  const { url, product_type } = req.body;
 
   if (!url) {
     return res.status(400).json({ message: "URL is required" });
   }
 
   try {
-    const result = await AddTrackingutton(url);
+    const result = await AddTrackingutton(url, product_type);
     if (result === "Amazon Link added successfully") {
       res.status(200).json({ message: result });
     } else {
