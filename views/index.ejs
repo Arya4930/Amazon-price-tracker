@@ -96,6 +96,7 @@
     // Add event listener to the Add button
     document.getElementById("addButton").addEventListener("click", async () => {
       const productLink = document.getElementById("productLink").value;
+      const feedbackMessage = document.getElementById("feedbackMessage");
       const product_type = document.getElementById("category").value;
 
       try {
@@ -114,7 +115,7 @@
         feedbackMessage.textContent = result.message;
         feedbackMessage.style.color = response.ok ? "green" : "red";
       } catch (error) {
-        alert("An error occurred. Please try again.");
+        feedbackMessage.textContent = "An error occurred. Please try again.";
         feedbackMessage.style.color = "red";
       }
     });
