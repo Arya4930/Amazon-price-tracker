@@ -16,13 +16,3 @@ select {
   background-position: right 12px center;
   background-size: 10px;
 }
-
-/* Optional: Adjust hover and focus states */
-select:hover,
-select:focus {
-  border-color: #495057;
-}
-
-body {
-  background-color: #000000 !important; 
-}
