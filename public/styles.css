@@ -1,3 +1,28 @@
 .linkbar{
   max-width: 45%;
 }
+
+select {
+  appearance: none; /* Remove default arrow */
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  background-color: rgb(61, 58, 61);/* Dark background */
+  color: white; /* White text */
+  border: 1px solid #343a40; /* Dark border */
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"%3E%3Cpath d="M2 0L0 2h4z"/%3E%3C/svg%3E'); /* Custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 10px;
+}
+
+/* Optional: Adjust hover and focus states */
+select:hover,
+select:focus {
+  border-color: #495057;
+}
+
+body {
+  background-color: #000000 !important; 
+}
