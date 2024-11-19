@@ -27,7 +27,6 @@ app.get("/", async (req, res) => {
 
 // API Endpoint for ading Trackinglinks
 app.post("/api/add-tracking", async (req, res) => {
-  console.log(req)
   const { url, product_type } = req.body;
 
   if (!url) {
