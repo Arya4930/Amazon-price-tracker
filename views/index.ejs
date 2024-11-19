@@ -67,7 +67,7 @@
 
   <main class="product-list ">
     <% cachedProducts.forEach((product)=> { %>
-      <div class="card product-card bg-less-darker" style="width: 18rem; height: 25rem">
+      <div class="card product-card bg-less-darker text-white" style="width: 18rem; height: 25rem">
         <!-- Check if the product image is a Base64 string -->
         <% if (product.product_image) { %>
           <img class="card-img-top" src="<%= product.product_image %>" alt="<%= product.name %>" />
@@ -82,7 +82,7 @@
                 <p class="card-text">
                   Price (INR): <%= product.price_INR.toLocaleString() %>
                 </p>
-                <p class="card-text">
+                <p class="card-text ">
                   Price (USD): <%= product.price_USD.toLocaleString() %>
                 </p>
                 <!-- Display the link to the product -->
